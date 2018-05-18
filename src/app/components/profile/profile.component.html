@@ -1,0 +1,140 @@
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/fabio-mangione.jpg');">
+      <div class="filter"></div>
+  </div>
+  <div class="section profile-content">
+      <div class="container">
+          <div class="owner">
+              <div class="avatar">
+                  <img src="../assets/img/new_logo.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+              </div>
+              <div class="name">
+                  <h4 class="title"> Welcome: {{ getFirstName() | uppercase }}<br /></h4>
+                  <!-- <h6 class="description">EthAddress : {{ getEthAddress() }}</h6> -->
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6 ml-auto mr-auto text-center">
+                  <p>your name is {{ getFirstName() +' '+ getLastName() }} and you are associated with us with {{ getEmail() }} email id </p>
+                  <br />
+              </div>
+          </div>
+          <br/>
+          <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                  <ngb-tabset [justify]="'center'">
+                      <ngb-tab title="Profile">
+                          <ng-template ngbTabContent >
+                              <div class="row following" id="follows">
+                                  <div class="col-md-6 ml-auto mr-auto">
+                                      <ul class="list-unstyled follows">
+                                        <li>
+                                          <div class="row">
+                                              <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                                <h6>First Name </h6>
+                                              </div>
+                                              <div class="col-md-6 col-sm-6 ml-auto">
+                                                  <h6> {{ getFirstName() }}</h6>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                              <h6>Last Name </h6>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 ml-auto">
+                                                <h6> {{ getLastName() }}</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                            <h6>Email ID </h6>
+                                          </div>
+                                          <div class="col-md-6 col-sm-6 ml-auto">
+                                              <h6> {{ getEmail() }}</h6>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                          <h6>Verified </h6>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 ml-auto">
+                                            <h6> {{ getVerified() }}</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                          <hr />
+                                          <li>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Dashboard">
+                          <ng-template ngbTabContent>
+                              <div class="row following" id="follows">
+                                  <div class="col-md-6 ml-auto mr-auto">
+                                      <ul class="list-unstyled follows">
+                                        <li>
+                                          <div class="row">
+                                              <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                                <h6>Verification Token </h6>
+                                              </div>
+                                              <div class="col-md-6 col-sm-6 ml-auto">
+                                                  <h6> {{ getverificationToken() }}</h6>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                              <h6>Etherum Address </h6>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 ml-auto">
+                                                <h6> {{ getEthAddress() }}</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                            <h6>Generated Investor Code</h6>
+                                          </div>
+                                          <div class="col-md-6 col-sm-6 ml-auto">
+                                              <h6> {{ getgeneratedInvestorCode() }}</h6>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                                          <h6>accountType </h6>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 ml-auto">
+                                            <h6> getaccountType()</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                          <hr />
+                                          <li>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+
+                          </ng-template>
+                      </ngb-tab>
+                  </ngb-tabset>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+  <div class="container">
+      <div class="navbar-translate">
+          <a class="navbar-brand"  routerLink="/"> Navbar{{ hello }} </a>
+          <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <span class="navbar-toggler-bar"></span>
+            <span class="navbar-toggler-bar"></span>
+            <span class="navbar-toggler-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"  *ngIf='authService.loggedIn()' routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link"  rel="tooltip" title="Follow us on Twitter" data-placement="bottom"  routerLink="/profile">Profile</a>
+          </li>
+          <li class="nav-item"  *ngIf='authService.loggedIn()'>
+            <a class="nav-link" (click)="onLogoutClick()" href="#">Log Out</a>
+        </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+  private toggleButton: any;
+  private sidebarVisible: boolean;
+
+  constructor(
+    public location: Location,
+    private element : ElementRef,
+    private authService : AuthService,
+    private router : Router
+  ) { 
+    this.sidebarVisible = false;
+  }
+
+  ngOnInit() {
+    const navbar: HTMLElement = this.element.nativeElement;
+    this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+  }
+
+  sidebarOpen() {
+    const toggleButton = this.toggleButton;
+    const html = document.getElementsByTagName('html')[0];
+    // console.log(html);
+    // console.log(toggleButton, 'toggle');
+
+    setTimeout(function(){
+        toggleButton.classList.add('toggled');
+    }, 500);
+    html.classList.add('nav-open');
+
+    this.sidebarVisible = true;
+};
+sidebarClose() {
+    const html = document.getElementsByTagName('html')[0];
+    // console.log(html);
+    this.toggleButton.classList.remove('toggled');
+    this.sidebarVisible = false;
+    html.classList.remove('nav-open');
+};
+sidebarToggle() {
+    // const toggleButton = this.toggleButton;
+    // const body = document.getElementsByTagName('body')[0];
+    if (this.sidebarVisible === false) {
+        this.sidebarOpen();
+    } else {
+        this.sidebarClose();
+    }
+};
+
+
+  onLogoutClick() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    return false;
+  }
+}
